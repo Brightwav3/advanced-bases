@@ -1,9 +1,9 @@
 {
   "id": "advanced-bases",
   "name": "Advanced Bases",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "minAppVersion": "1.10.0",
-  "description": "Notion-style views for Obsidian Bases — Cards Compact, Feed, and Timeline. A lighter build with only the core views.",
+  "description": "Notion-style views for Bases — Cards Compact, Feed, and Timeline. A lighter build with only the core views.",
   "author": "Šimon Zelenka",
   "isDesktopOnly": false
 }

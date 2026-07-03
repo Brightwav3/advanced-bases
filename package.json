@@ -1,8 +1,8 @@
 {
   "name": "advanced-bases",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
-  "description": "Notion-style views for Obsidian Bases — Cards Compact, Feed, and Timeline.",
+  "description": "Notion-style views for Bases — Cards Compact, Feed, and Timeline.",
   "scripts": {
     "build": "node esbuild.config.mjs production",
     "dev": "node esbuild.config.mjs",
