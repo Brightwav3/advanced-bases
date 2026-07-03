@@ -1,6 +1,6 @@
 # Advanced Bases
 
-Three focused, Notion-style views for [Obsidian Bases](https://help.obsidian.md/bases): **Cards Compact**, **Feed**, and **Timeline**. A lightweight companion to Obsidian's native Bases views — no Calendar, no Kanban, just the three views that matter most, kept small and fast.
+Three focused, Notion-style views for [Obsidian Bases](https://help.obsidian.md/bases): **Cards Compact**, **Feed**, and **Timeline**. A lightweight companion to Obsidian's native Bases views.
 
 ## Views
 
