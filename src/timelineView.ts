@@ -1,11 +1,10 @@
 import {
   BasesEntry,
   BasesView,
+  moment,
   QueryController,
-  TFile,
 } from "obsidian";
-import moment from "moment";
-import type { Moment } from "moment";
+import type { Moment } from "./momentType";
 import {
   GroupColorOverrides,
   loadGroupColorOverrides,
@@ -160,7 +159,7 @@ export class TimelineView extends BasesView {
     if (isEmpty) return;
 
     const allDates = timelineEntries.flatMap((te) => (te.end ? [te.start, te.end] : [te.start]));
-    const range = computeDateRange(allDates);
+    const range = computeDateRange(allDates, moment());
     const lanes = groupIntoLanes(timelineEntries, (te) => te.groupValue);
 
     this.render(range, lanes);
@@ -172,8 +171,7 @@ export class TimelineView extends BasesView {
     const totalWidth = Math.max(1, totalDays * this.pxPerDay);
     const totalHeight = AXIS_HEIGHT + lanes.length * this.laneHeight;
 
-    this.contentEl.style.width = `${totalWidth}px`;
-    this.contentEl.style.height = `${totalHeight}px`;
+    this.contentEl.setCssStyles({ width: `${totalWidth}px`, height: `${totalHeight}px` });
 
     this.renderAxis(range, totalWidth);
     this.renderLanes(range, lanes);
@@ -182,8 +180,7 @@ export class TimelineView extends BasesView {
 
   private renderAxis(range: DateRange, totalWidth: number): void {
     this.axisEl.empty();
-    this.axisEl.style.width = `${totalWidth}px`;
-    this.axisEl.style.height = `${AXIS_HEIGHT}px`;
+    this.axisEl.setCssStyles({ width: `${totalWidth}px`, height: `${AXIS_HEIGHT}px` });
 
     const unit: TickUnit = pickTickUnit(this.pxPerDay);
     const ticks = generateAxisTicks(range.start, range.end, this.pxPerDay, unit);
@@ -191,7 +188,7 @@ export class TimelineView extends BasesView {
     for (const tick of ticks) {
       const x = dateToX(tick.date, range.start, this.pxPerDay);
       const tickEl = this.axisEl.createDiv({ cls: "timeline-view-axis-tick" });
-      tickEl.style.left = `${x}px`;
+      tickEl.setCssStyles({ left: `${x}px` });
       tickEl.createDiv({ cls: "timeline-view-axis-tick-line" });
       tickEl.createDiv({ cls: "timeline-view-axis-tick-label", text: tick.label });
     }
@@ -199,12 +196,11 @@ export class TimelineView extends BasesView {
 
   private renderLanes(range: DateRange, lanes: LaneGroup<TimelineEntry>[]): void {
     this.lanesEl.empty();
-    this.lanesEl.style.top = `${AXIS_HEIGHT}px`;
+    this.lanesEl.setCssStyles({ top: `${AXIS_HEIGHT}px` });
 
     lanes.forEach((lane, laneIndex) => {
       const laneEl = this.lanesEl.createDiv({ cls: "timeline-view-lane" });
-      laneEl.style.top = `${laneIndex * this.laneHeight}px`;
-      laneEl.style.height = `${this.laneHeight}px`;
+      laneEl.setCssStyles({ top: `${laneIndex * this.laneHeight}px`, height: `${this.laneHeight}px` });
 
       const color = resolveGroupColor(lane.key, this.laneColorOverrides);
 
@@ -235,14 +231,16 @@ export class TimelineView extends BasesView {
       cls: isMarker ? "timeline-view-marker" : "timeline-view-bar",
       attr: { title: te.entry.file.basename },
     });
-    barEl.style.left = `${geometry.left}px`;
-    barEl.style.width = `${geometry.width}px`;
-    barEl.style.backgroundColor = color;
+    barEl.setCssStyles({
+      left: `${geometry.left}px`,
+      width: `${geometry.width}px`,
+      backgroundColor: color,
+    });
 
     barEl.createSpan({ cls: "timeline-view-bar-label", text: te.entry.file.basename });
 
     barEl.addEventListener("click", () => {
-      this.app.workspace.getLeaf(false).openFile(te.entry.file);
+      void this.app.workspace.getLeaf(false).openFile(te.entry.file);
     });
   }
 
@@ -254,9 +252,11 @@ export class TimelineView extends BasesView {
 
     const x = dateToX(today, range.start, this.pxPerDay);
     const markerEl = this.contentEl.createDiv({ cls: "timeline-view-today-marker" });
-    markerEl.style.left = `${x}px`;
-    markerEl.style.height = `${totalHeight}px`;
-    markerEl.style.backgroundColor = this.todayMarkerColor;
+    markerEl.setCssStyles({
+      left: `${x}px`,
+      height: `${totalHeight}px`,
+      backgroundColor: this.todayMarkerColor,
+    });
   }
 
   private onWheel = (event: WheelEvent): void => {

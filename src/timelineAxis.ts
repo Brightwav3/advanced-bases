@@ -1,5 +1,4 @@
-import type { Moment } from "moment";
-import moment from "moment";
+import type { Moment } from "./momentType";
 
 /**
  * The one function in the whole Timeline view that needs the most manual

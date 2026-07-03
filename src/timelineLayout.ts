@@ -1,5 +1,4 @@
-import type { Moment } from "moment";
-import moment from "moment";
+import type { Moment } from "./momentType";
 
 // 100-year zoom: the full range (~36525 days) still renders at a nonzero
 // width. 1-day zoom: a single day is comfortably wide on screen.
@@ -19,15 +18,18 @@ export interface DateRange {
  * Computes the full date range to render: earliest to latest date among
  * `dates`, padded by `paddingDays` on both ends so bars/markers at the
  * extremes aren't flush against the scrollable edge. Falls back to a
- * range centered on today when `dates` is empty (e.g. a Base with no
+ * range centered on `now` when `dates` is empty (e.g. a Base with no
  * matching entries) so the view always has a sensible axis to draw.
+ * `now` is caller-supplied (rather than calling moment() internally) so
+ * this module has no runtime dependency on the moment package — the
+ * plugin must import moment from "obsidian", not "moment", but this file
+ * stays free of Obsidian/DOM dependencies for unit testability.
  */
-export function computeDateRange(dates: Moment[], paddingDays = 30): DateRange {
+export function computeDateRange(dates: Moment[], now: Moment, paddingDays = 30): DateRange {
   if (dates.length === 0) {
-    const today = moment();
     return {
-      start: today.clone().subtract(paddingDays, "days"),
-      end: today.clone().add(paddingDays, "days"),
+      start: now.clone().subtract(paddingDays, "days"),
+      end: now.clone().add(paddingDays, "days"),
     };
   }
 

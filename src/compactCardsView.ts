@@ -68,10 +68,11 @@ function getImageSrc(app: App, file: TFile, propId: BasesPropertyId | null): str
   const dot = propId.indexOf(".");
   if (dot === -1 || propId.slice(0, dot) !== "note") return null;
   const key = propId.slice(dot + 1);
-  const frontmatter = app.metadataCache.getFileCache(file)?.frontmatter;
-  const raw = frontmatter?.[key];
+  const frontmatter: Record<string, unknown> | undefined =
+    app.metadataCache.getFileCache(file)?.frontmatter;
+  const raw: unknown = frontmatter?.[key];
   if (!raw) return null;
-  const value = Array.isArray(raw) ? raw[0] : raw;
+  const value: unknown = Array.isArray(raw) ? raw[0] : raw;
   return typeof value === "string" ? resolveImageSrc(app, file, value) : null;
 }
 
@@ -118,8 +119,10 @@ export class CompactCardsView extends BasesView {
 
     const compact = this.isCompact;
     this.gridEl.toggleClass("compact-cards-grid-compact", compact);
-    this.gridEl.style.setProperty("--compact-card-size", `${this.cardSize}px`);
-    this.gridEl.style.setProperty("--compact-card-aspect", String(this.imageAspectRatio));
+    this.gridEl.setCssProps({
+      "--compact-card-size": `${this.cardSize}px`,
+      "--compact-card-aspect": String(this.imageAspectRatio),
+    });
 
     const imagePropId = this.config.getAsPropertyId("imageProperty");
 
@@ -135,7 +138,7 @@ export class CompactCardsView extends BasesView {
   private renderImageCard(entry: BasesEntry, imagePropId: BasesPropertyId | null): void {
     const cardEl = this.gridEl.createDiv({ cls: "compact-cards-card" });
     cardEl.addEventListener("click", () => {
-      this.app.workspace.getLeaf(false).openFile(entry.file);
+      void this.app.workspace.getLeaf(false).openFile(entry.file);
     });
 
     const coverEl = cardEl.createDiv({
@@ -160,7 +163,7 @@ export class CompactCardsView extends BasesView {
   private renderCompactCard(entry: BasesEntry, imagePropId: BasesPropertyId | null): void {
     const cardEl = this.gridEl.createDiv({ cls: "compact-cards-card compact-cards-card-compact" });
     cardEl.addEventListener("click", () => {
-      this.app.workspace.getLeaf(false).openFile(entry.file);
+      void this.app.workspace.getLeaf(false).openFile(entry.file);
     });
 
     const src = getImageSrc(this.app, entry.file, imagePropId);

@@ -93,7 +93,7 @@ export class FeedView extends BasesView {
       text: entry.file.basename,
     });
     titleEl.addEventListener("click", () => {
-      this.app.workspace.getLeaf(false).openFile(entry.file);
+      void this.app.workspace.getLeaf(false).openFile(entry.file);
     });
 
     if (this.config.get("showProperties") !== false) {

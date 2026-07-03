@@ -1,4 +1,4 @@
-import type { Moment } from "moment";
+import type { Moment } from "./momentType";
 
 export function renderFeedViewNoteTemplate(raw: string, title: string, now: Moment): string {
   let out = raw;

@@ -25,9 +25,10 @@ interface LegacySettings {
   lessonTemplatePath?: string;
 }
 
-export function migrateSettings(
-  loaded: Partial<AdvancedBasesSettings> & LegacySettings
-): AdvancedBasesSettings {
+export function migrateSettings(loadedData: unknown): AdvancedBasesSettings {
+  const loaded = (
+    loadedData && typeof loadedData === "object" ? loadedData : {}
+  ) as Partial<AdvancedBasesSettings> & LegacySettings;
   const migrated: Partial<AdvancedBasesSettings> = { ...loaded };
   if (migrated.feedViewNoteFolder === undefined && loaded.lessonFolder !== undefined) {
     migrated.feedViewNoteFolder = loaded.lessonFolder;

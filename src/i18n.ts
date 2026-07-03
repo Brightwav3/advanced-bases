@@ -1,3 +1,5 @@
+import { getLanguage } from "obsidian";
+
 export interface LocaleStrings {
   newNoteButton: string;
   createFailed: string;
@@ -686,10 +688,10 @@ const LOCALES: Record<string, LocaleStrings> = {
 };
 
 /**
- * Resolves a raw Obsidian language code (as stored in localStorage, e.g.
- * "en", "zh-CN", "pt-BR") to one of our supported locale keys, falling back
- * to the base language and finally English. Pure function, no DOM access,
- * so it stays unit-testable.
+ * Resolves a raw Obsidian language code (from getLanguage(), e.g. "en",
+ * "zh-CN", "pt-BR") to one of our supported locale keys, falling back to
+ * the base language and finally English. Pure function, no Obsidian
+ * dependency, so it stays unit-testable.
  */
 export function resolveLocale(raw: string | null | undefined): string {
   const normalized = (raw || "en").toLowerCase();
@@ -699,16 +701,8 @@ export function resolveLocale(raw: string | null | undefined): string {
   return "en";
 }
 
-function detectRawLanguage(): string | null {
-  try {
-    return window.localStorage.getItem("language");
-  } catch {
-    return null;
-  }
-}
-
 export function getStrings(): LocaleStrings {
-  return LOCALES[resolveLocale(detectRawLanguage())] ?? en;
+  return LOCALES[resolveLocale(getLanguage())] ?? en;
 }
 
 export function format(template: string, vars: Record<string, string>): string {
