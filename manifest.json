@@ -1,7 +1,7 @@
 {
   "id": "advanced-bases",
   "name": "Advanced Bases",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "minAppVersion": "1.10.0",
   "description": "Notion-style views for Bases — Cards Compact, Feed, and Timeline. A lighter build with only the core views.",
   "author": "Šimon Zelenka",
