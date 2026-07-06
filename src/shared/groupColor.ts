@@ -93,12 +93,12 @@ export function renderColorSwatch(
     cls: "advanced-bases-color-swatch",
     attr: { type: "button", "aria-label": "Change color" },
   });
-  swatchEl.style.setProperty("--swatch-color", currentColor);
+  swatchEl.setCssProps({ "--swatch-color": currentColor });
 
   const inputEl = parentEl.createEl("input", {
     attr: { type: "color", value: currentColor },
   });
-  inputEl.style.display = "none";
+  inputEl.setCssStyles({ display: "none" });
 
   swatchEl.addEventListener("click", (event) => {
     event.stopPropagation();

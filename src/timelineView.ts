@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-redundant-type-constituents */
 import {
   BasesEntry,
   BasesView,
   QueryController,
-  TFile,
+  moment,
 } from "obsidian";
-import moment from "moment";
-import type { Moment } from "moment";
 import {
   GroupColorOverrides,
   loadGroupColorOverrides,
@@ -43,8 +40,8 @@ const DEFAULT_PX_PER_DAY = 20;
 
 interface TimelineEntry {
   entry: BasesEntry;
-  start: Moment;
-  end: Moment | null;
+  start: moment.Moment;
+  end: moment.Moment | null;
   groupValue: string | null;
 }
 
@@ -109,7 +106,7 @@ export class TimelineView extends BasesView {
   // Resolves an entry's start date. Falls back to file.ctime when
   // dateProperty is unset on the view or empty on this specific entry, so
   // every entry always has *some* placement (project spec's fallback rule).
-  private resolveStartDate(entry: BasesEntry): Moment {
+  private resolveStartDate(entry: BasesEntry): moment.Moment {
     const dateProp = this.dateProperty;
     if (dateProp) {
       const value = entry.getValue(dateProp);
@@ -121,7 +118,7 @@ export class TimelineView extends BasesView {
     return moment(entry.file.stat.ctime);
   }
 
-  private resolveEndDate(entry: BasesEntry): Moment | null {
+  private resolveEndDate(entry: BasesEntry): moment.Moment | null {
     const endProp = this.endDateProperty;
     if (!endProp) return null;
     const value = entry.getValue(endProp);
@@ -243,7 +240,7 @@ export class TimelineView extends BasesView {
     barEl.createSpan({ cls: "timeline-view-bar-label", text: te.entry.file.basename });
 
     barEl.addEventListener("click", () => {
-      this.app.workspace.getLeaf(false).openFile(te.entry.file);
+      void this.app.workspace.getLeaf(false).openFile(te.entry.file);
     });
   }
 

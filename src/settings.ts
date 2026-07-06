@@ -50,7 +50,7 @@ export class AdvancedBasesSettingTab extends PluginSettingTab {
     super(app, plugin);
   }
 
-  // @ts-ignore - display is deprecated since 1.13.0, but we must use it to maintain compatibility with older Obsidian versions (minAppVersion is 1.10.0)
+  // @ts-ignore: display() is deprecated in Obsidian 1.13.0, but we must use it to maintain compatibility with older Obsidian versions (minAppVersion is 1.10.0)
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
@@ -130,7 +130,7 @@ export class AdvancedBasesSettingTab extends PluginSettingTab {
           .onClick(async () => {
             this.plugin.settings.todayMarkerColor = DEFAULT_SETTINGS.todayMarkerColor;
             await this.plugin.saveSettings();
-            // @ts-ignore
+            // @ts-ignore: Re-renders the settings tab when today's marker color is reset
             this.display();
           });
       });

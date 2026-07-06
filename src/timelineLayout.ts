@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-redundant-type-constituents */
-import type { Moment } from "moment";
-import moment from "moment";
-
+import { moment } from "obsidian";
 // 100-year zoom: the full range (~36525 days) still renders at a nonzero
 // width. 1-day zoom: a single day is comfortably wide on screen.
 export const MIN_PX_PER_DAY = 0.002;
@@ -12,8 +9,8 @@ export function clampPxPerDay(pxPerDay: number): number {
 }
 
 export interface DateRange {
-  start: Moment;
-  end: Moment;
+  start: moment.Moment;
+  end: moment.Moment;
 }
 
 /**
@@ -23,7 +20,7 @@ export interface DateRange {
  * range centered on today when `dates` is empty (e.g. a Base with no
  * matching entries) so the view always has a sensible axis to draw.
  */
-export function computeDateRange(dates: Moment[], paddingDays = 30): DateRange {
+export function computeDateRange(dates: moment.Moment[], paddingDays = 30): DateRange {
   if (dates.length === 0) {
     const today = moment();
     return {
@@ -45,12 +42,12 @@ export function computeDateRange(dates: Moment[], paddingDays = 30): DateRange {
   };
 }
 
-export function dateToX(date: Moment, rangeStart: Moment, pxPerDay: number): number {
+export function dateToX(date: moment.Moment, rangeStart: moment.Moment, pxPerDay: number): number {
   const daysElapsed = date.diff(rangeStart, "days", true);
   return daysElapsed * pxPerDay;
 }
 
-export function xToDate(x: number, rangeStart: Moment, pxPerDay: number): Moment {
+export function xToDate(x: number, rangeStart: moment.Moment, pxPerDay: number): moment.Moment {
   const days = x / pxPerDay;
   return rangeStart.clone().add(days, "days");
 }
@@ -72,9 +69,9 @@ export interface BarGeometry {
  *   sub-day span still renders as a visible sliver rather than vanishing.
  */
 export function computeBarGeometry(
-  startDate: Moment,
-  endDate: Moment | null,
-  rangeStart: Moment,
+  startDate: moment.Moment,
+  endDate: moment.Moment | null,
+  rangeStart: moment.Moment,
   pxPerDay: number,
   minMarkerWidth = 12
 ): BarGeometry {

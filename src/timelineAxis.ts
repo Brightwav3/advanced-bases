@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-redundant-type-constituents */
-import type { Moment } from "moment";
-import moment from "moment";
-
+import { moment } from "obsidian";
 /**
  * The one function in the whole Timeline view that needs the most manual
  * testing across the full zoom range (project spec, "Axis tick generation").
@@ -67,25 +64,25 @@ export function pickTickUnit(pxPerDay: number, minLabelSpacingPx = 60): TickUnit
 }
 
 export interface AxisTick {
-  date: Moment;
+  date: moment.Moment;
   label: string;
 }
 
-function quarterLabel(date: Moment): string {
+function quarterLabel(date: moment.Moment): string {
   return `Q${Math.floor(date.month() / 3) + 1}`;
 }
 
-function decadeLabel(date: Moment): string {
+function decadeLabel(date: moment.Moment): string {
   const decadeStart = Math.floor(date.year() / 10) * 10;
   return `${decadeStart}s`;
 }
 
-function periodLabel(date: Moment, spanYears: number): string {
+function periodLabel(date: moment.Moment, spanYears: number): string {
   const periodStart = Math.floor(date.year() / spanYears) * spanYears;
   return `${periodStart}s`;
 }
 
-export function formatTickLabel(date: Moment, unit: TickUnit): string {
+export function formatTickLabel(date: moment.Moment, unit: TickUnit): string {
   switch (unit) {
     case "day":
     case "week":
@@ -114,8 +111,8 @@ export function formatTickLabel(date: Moment, unit: TickUnit): string {
  * from rangeStart.
  */
 export function generateAxisTicks(
-  rangeStart: Moment,
-  rangeEnd: Moment,
+  rangeStart: moment.Moment,
+  rangeEnd: moment.Moment,
   pxPerDay: number,
   unit: TickUnit
 ): AxisTick[] {

@@ -1,3 +1,5 @@
+import { getLanguage } from "obsidian";
+
 export interface LocaleStrings {
   newNoteButton: string;
   createFailed: string;
@@ -811,7 +813,7 @@ export function resolveLocale(raw: string | null | undefined): string {
 
 function detectRawLanguage(): string | null {
   try {
-    return window.localStorage.getItem("language");
+    return getLanguage();
   } catch {
     return null;
   }

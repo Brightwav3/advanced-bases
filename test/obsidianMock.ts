@@ -6,6 +6,9 @@
 // this stub lets Vitest resolve those imports for modules that are pulled
 // into the test graph but never actually invoke them during a test run.
 
+import moment from "moment";
+export { moment };
+
 export function getLanguage(): string {
   return "en";
 }

@@ -137,7 +137,8 @@ export default class AdvancedBasesPlugin extends Plugin {
   }
 
   async loadSettings(): Promise<void> {
-    this.settings = migrateSettings((await this.loadData()) || {});
+    const loadedData = (await this.loadData()) as Record<string, unknown> | null;
+    this.settings = migrateSettings(loadedData || {});
   }
 
   async saveSettings(): Promise<void> {

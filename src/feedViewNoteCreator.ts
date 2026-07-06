@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-redundant-type-constituents */
-import { App, Notice, TFile, TFolder, normalizePath } from "obsidian";
-import moment from "moment";
+import { App, Notice, TFile, TFolder, moment, normalizePath } from "obsidian";
 import { format, getStrings } from "./i18n";
 import {
   buildBaseWikilink,

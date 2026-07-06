@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-redundant-type-constituents */
-import type { Moment } from "moment";
+import { moment } from "obsidian";
 
-export function renderFeedViewNoteTemplate(raw: string, title: string, now: Moment): string {
+export function renderFeedViewNoteTemplate(raw: string, title: string, now: moment.Moment): string {
   let out = raw;
   out = out.replace(/\{\{\s*title\s*\}\}/gi, title);
   out = out.replace(/\{\{\s*date\s*:([^}]*)\}\}/gi, (_match, fmt: string) => now.format(fmt));
@@ -11,7 +10,7 @@ export function renderFeedViewNoteTemplate(raw: string, title: string, now: Mome
   return out;
 }
 
-export function buildFeedViewNoteBasename(now: Moment, baseName: string): string {
+export function buildFeedViewNoteBasename(now: moment.Moment, baseName: string): string {
   return `${now.format("YYYY. M. D")} – ${baseName}`;
 }
 
