@@ -1,5 +1,3 @@
-import { getLanguage } from "obsidian";
-
 export interface LocaleStrings {
   newNoteButton: string;
   createFailed: string;
@@ -30,6 +28,11 @@ export interface LocaleStrings {
   timelineEmptyState: string;
   timelineTodayMarkerColorName: string;
   timelineTodayMarkerColorDesc: string;
+  settingsIntro: string;
+  settingsFeedHeading: string;
+  settingsCardsCompactHeading: string;
+  settingsCardsCompactDesc: string;
+  settingsTimelineHeading: string;
   helpAria: string;
   feedHelpLine1: string;
   feedHelpLine2: string;
@@ -72,6 +75,13 @@ const en: LocaleStrings = {
   timelineTodayMarkerColorName: "Timeline today-marker color",
   timelineTodayMarkerColorDesc:
     "Overrides the default theme-adaptive color of the vertical line marking today's date in the Timeline view.",
+  settingsIntro:
+    "These settings apply globally, to every Base that uses an Advanced Bases view. Per-Base display options — like card size, image fit, or lane height — are configured separately in each Base's own view settings.",
+  settingsFeedHeading: "Feed view",
+  settingsCardsCompactHeading: "Cards Compact",
+  settingsCardsCompactDesc:
+    "Cards Compact has no global settings. Its display options (compact mode, card size, image fit, image property, show icon) are configured per Base — open a Base using the Cards Compact view and edit its view settings from the sidebar.",
+  settingsTimelineHeading: "Timeline view",
   helpAria: "View help",
   feedHelpLine1: "Click a note's title to open it.",
   feedHelpLine2: 'Use "New note" to create a note linked to this Base.',
@@ -114,6 +124,13 @@ const cs: LocaleStrings = {
   timelineTodayMarkerColorName: "Barva značky dnešního dne v Timeline",
   timelineTodayMarkerColorDesc:
     "Přepíše výchozí barvu (přizpůsobenou motivu), kterou má svislá čára označující dnešní datum v zobrazení Timeline.",
+  settingsIntro:
+    "Tato nastavení platí globálně pro každou Bázi, která používá zobrazení Advanced Bases. Nastavení zobrazení jednotlivých Bází — jako šířka karty, přizpůsobení obrázku nebo výška řádku — se nastavují zvlášť ve vlastním nastavení zobrazení dané Báze.",
+  settingsFeedHeading: "Zobrazení Feed",
+  settingsCardsCompactHeading: "Cards Compact",
+  settingsCardsCompactDesc:
+    "Cards Compact nemá žádná globální nastavení. Jeho nastavení zobrazení (kompaktní režim, šířka karty, přizpůsobení obrázku, vlastnost obrázku, zobrazení ikony) se nastavují pro každou Bázi zvlášť — otevřete Bázi používající zobrazení Cards Compact a upravte její nastavení zobrazení v postranním panelu.",
+  settingsTimelineHeading: "Zobrazení Timeline",
   helpAria: "Nápověda k zobrazení",
   feedHelpLine1: "Kliknutím na název poznámky ji otevřete.",
   feedHelpLine2: 'Pomocí "Nová poznámka" vytvoříte poznámku propojenou s touto Bází.',
@@ -156,6 +173,13 @@ const de: LocaleStrings = {
   timelineTodayMarkerColorName: "Farbe der Heute-Markierung in der Zeitleiste",
   timelineTodayMarkerColorDesc:
     "Überschreibt die standardmäßig designabhängige Farbe der senkrechten Linie, die das heutige Datum in der Zeitleisten-Ansicht markiert.",
+  settingsIntro:
+    "Diese Einstellungen gelten global für jede Base, die eine Advanced-Bases-Ansicht verwendet. Ansichtsspezifische Optionen pro Base – wie Kartenbreite, Bildanpassung oder Spurhöhe – werden separat in den eigenen Ansichtseinstellungen jeder Base konfiguriert.",
+  settingsFeedHeading: "Feed-Ansicht",
+  settingsCardsCompactHeading: "Cards Compact",
+  settingsCardsCompactDesc:
+    "Cards Compact hat keine globalen Einstellungen. Ihre Anzeigeoptionen (Kompaktmodus, Kartenbreite, Bildanpassung, Bildeigenschaft, Symbolanzeige) werden pro Base konfiguriert – öffnen Sie eine Base mit der Cards-Compact-Ansicht und bearbeiten Sie deren Ansichtseinstellungen in der Seitenleiste.",
+  settingsTimelineHeading: "Zeitleisten-Ansicht",
   helpAria: "Ansichtshilfe",
   feedHelpLine1: "Klicken Sie auf den Titel einer Notiz, um sie zu öffnen.",
   feedHelpLine2: 'Mit "Neue Notiz" erstellen Sie eine mit dieser Base verknüpfte Notiz.',
@@ -198,6 +222,13 @@ const fr: LocaleStrings = {
   timelineTodayMarkerColorName: "Couleur du repère « aujourd'hui » de la frise",
   timelineTodayMarkerColorDesc:
     "Remplace la couleur par défaut (adaptée au thème) de la ligne verticale marquant la date du jour dans la vue Frise chronologique.",
+  settingsIntro:
+    "Ces paramètres s'appliquent globalement à chaque Base utilisant une vue Advanced Bases. Les options d'affichage propres à chaque Base — comme la largeur des cartes, l'ajustement de l'image ou la hauteur des lignes — se configurent séparément dans les paramètres de vue propres à chaque Base.",
+  settingsFeedHeading: "Vue Feed",
+  settingsCardsCompactHeading: "Cards Compact",
+  settingsCardsCompactDesc:
+    "Cards Compact n'a aucun paramètre global. Ses options d'affichage (mode compact, largeur de carte, ajustement de l'image, propriété d'image, affichage de l'icône) se configurent par Base — ouvrez une Base utilisant la vue Cards Compact et modifiez ses paramètres de vue dans le panneau latéral.",
+  settingsTimelineHeading: "Vue Frise chronologique",
   helpAria: "Aide de la vue",
   feedHelpLine1: "Cliquez sur le titre d'une note pour l'ouvrir.",
   feedHelpLine2: "Utilisez « Nouvelle note » pour créer une note liée à cette Base.",
@@ -240,6 +271,13 @@ const es: LocaleStrings = {
   timelineTodayMarkerColorName: "Color del marcador de hoy en la línea de tiempo",
   timelineTodayMarkerColorDesc:
     "Sustituye el color predeterminado (adaptado al tema) de la línea vertical que marca la fecha de hoy en la vista Línea de tiempo.",
+  settingsIntro:
+    "Estos ajustes se aplican globalmente a toda Base que use una vista de Advanced Bases. Las opciones de visualización propias de cada Base — como el ancho de tarjeta, el ajuste de imagen o la altura de carril — se configuran por separado en los ajustes de vista propios de cada Base.",
+  settingsFeedHeading: "Vista Feed",
+  settingsCardsCompactHeading: "Cards Compact",
+  settingsCardsCompactDesc:
+    "Cards Compact no tiene ajustes globales. Sus opciones de visualización (modo compacto, ancho de tarjeta, ajuste de imagen, propiedad de imagen, mostrar icono) se configuran por Base — abre una Base que use la vista Cards Compact y edita sus ajustes de vista en el panel lateral.",
+  settingsTimelineHeading: "Vista Línea de tiempo",
   helpAria: "Ayuda de la vista",
   feedHelpLine1: "Haz clic en el título de una nota para abrirla.",
   feedHelpLine2: "Usa «Nueva nota» para crear una nota vinculada a esta Base.",
@@ -282,6 +320,13 @@ const it: LocaleStrings = {
   timelineTodayMarkerColorName: "Colore del indicatore di oggi nella timeline",
   timelineTodayMarkerColorDesc:
     "Sostituisce il colore predefinito (adattato al tema) della linea verticale che indica la data odierna nella vista Timeline.",
+  settingsIntro:
+    "Queste impostazioni si applicano globalmente a ogni Base che usa una vista di Advanced Bases. Le opzioni di visualizzazione specifiche di ogni Base — come larghezza scheda, adattamento immagine o altezza corsia — si configurano separatamente nelle impostazioni di vista di ciascuna Base.",
+  settingsFeedHeading: "Vista Feed",
+  settingsCardsCompactHeading: "Cards Compact",
+  settingsCardsCompactDesc:
+    "Cards Compact non ha impostazioni globali. Le sue opzioni di visualizzazione (modalità compatta, larghezza scheda, adattamento immagine, proprietà immagine, mostra icona) si configurano per singola Base — apri una Base che usa la vista Cards Compact e modifica le sue impostazioni di vista nel pannello laterale.",
+  settingsTimelineHeading: "Vista Timeline",
   helpAria: "Guida della vista",
   feedHelpLine1: "Fai clic sul titolo di una nota per aprirla.",
   feedHelpLine2: 'Usa "Nuova nota" per creare una nota collegata a questa Base.',
@@ -324,6 +369,13 @@ const pt: LocaleStrings = {
   timelineTodayMarkerColorName: "Cor do marcador de hoje na linha do tempo",
   timelineTodayMarkerColorDesc:
     "Substitui a cor padrão (adaptada ao tema) da linha vertical que marca a data de hoje na vista Linha do tempo.",
+  settingsIntro:
+    "Estas configurações aplicam-se globalmente a toda Base que use uma vista do Advanced Bases. As opções de exibição próprias de cada Base — como largura do cartão, ajuste da imagem ou altura da raia — são configuradas separadamente nas configurações de vista de cada Base.",
+  settingsFeedHeading: "Vista Feed",
+  settingsCardsCompactHeading: "Cards Compact",
+  settingsCardsCompactDesc:
+    "Cards Compact não tem configurações globais. Suas opções de exibição (modo compacto, largura do cartão, ajuste da imagem, propriedade da imagem, mostrar ícone) são configuradas por Base — abra uma Base que use a vista Cards Compact e edite suas configurações de vista na barra lateral.",
+  settingsTimelineHeading: "Vista Linha do tempo",
   helpAria: "Ajuda da visualização",
   feedHelpLine1: "Clique no título de uma nota para abri-la.",
   feedHelpLine2: 'Use "Nova nota" para criar uma nota vinculada a esta Base.',
@@ -366,6 +418,13 @@ const ru: LocaleStrings = {
   timelineTodayMarkerColorName: "Цвет отметки сегодняшнего дня на шкале времени",
   timelineTodayMarkerColorDesc:
     "Переопределяет цвет по умолчанию (адаптивный к теме) вертикальной линии, отмечающей сегодняшнюю дату в виде Шкала времени.",
+  settingsIntro:
+    "Эти настройки применяются глобально ко всем Base, использующим вид Advanced Bases. Параметры отображения для конкретной Base — например, ширина карточки, подгонка изображения или высота дорожки — настраиваются отдельно в собственных настройках вида каждой Base.",
+  settingsFeedHeading: "Вид Feed",
+  settingsCardsCompactHeading: "Cards Compact",
+  settingsCardsCompactDesc:
+    "У Cards Compact нет глобальных настроек. Параметры отображения (компактный режим, ширина карточки, подгонка изображения, свойство изображения, показ значка) настраиваются для каждой Base отдельно — откройте Base с видом Cards Compact и измените его настройки вида на боковой панели.",
+  settingsTimelineHeading: "Вид Шкала времени",
   helpAria: "Справка по виду",
   feedHelpLine1: "Нажмите на заголовок заметки, чтобы открыть её.",
   feedHelpLine2: "Используйте «Новая заметка», чтобы создать заметку, связанную с этой Базой.",
@@ -407,6 +466,13 @@ const ja: LocaleStrings = {
   timelineTodayMarkerColorName: "[EN] Timeline today-marker color",
   timelineTodayMarkerColorDesc:
     "[EN] Overrides the default theme-adaptive color of the vertical line marking today's date in the Timeline view.",
+  settingsIntro:
+    "[EN] These settings apply globally, to every Base that uses an Advanced Bases view. Per-Base display options — like card size, image fit, or lane height — are configured separately in each Base's own view settings.",
+  settingsFeedHeading: "[EN] Feed view",
+  settingsCardsCompactHeading: "[EN] Cards Compact",
+  settingsCardsCompactDesc:
+    "[EN] Cards Compact has no global settings. Its display options (compact mode, card size, image fit, image property, show icon) are configured per Base — open a Base using the Cards Compact view and edit its view settings from the sidebar.",
+  settingsTimelineHeading: "[EN] Timeline view",
   helpAria: "ビューのヘルプ",
   feedHelpLine1: "ノートのタイトルをクリックすると開きます。",
   feedHelpLine2: "「新規ノート」でこのBaseにリンクしたノートを作成します。",
@@ -448,6 +514,13 @@ const zh: LocaleStrings = {
   timelineTodayMarkerColorName: "[EN] Timeline today-marker color",
   timelineTodayMarkerColorDesc:
     "[EN] Overrides the default theme-adaptive color of the vertical line marking today's date in the Timeline view.",
+  settingsIntro:
+    "[EN] These settings apply globally, to every Base that uses an Advanced Bases view. Per-Base display options — like card size, image fit, or lane height — are configured separately in each Base's own view settings.",
+  settingsFeedHeading: "[EN] Feed view",
+  settingsCardsCompactHeading: "[EN] Cards Compact",
+  settingsCardsCompactDesc:
+    "[EN] Cards Compact has no global settings. Its display options (compact mode, card size, image fit, image property, show icon) are configured per Base — open a Base using the Cards Compact view and edit its view settings from the sidebar.",
+  settingsTimelineHeading: "[EN] Timeline view",
   helpAria: "视图帮助",
   feedHelpLine1: "点击笔记标题即可打开。",
   feedHelpLine2: "使用“新建笔记”创建与此 Base 关联的笔记。",
@@ -490,6 +563,13 @@ const pl: LocaleStrings = {
   timelineTodayMarkerColorName: "[EN] Timeline today-marker color",
   timelineTodayMarkerColorDesc:
     "[EN] Overrides the default theme-adaptive color of the vertical line marking today's date in the Timeline view.",
+  settingsIntro:
+    "[EN] These settings apply globally, to every Base that uses an Advanced Bases view. Per-Base display options — like card size, image fit, or lane height — are configured separately in each Base's own view settings.",
+  settingsFeedHeading: "[EN] Feed view",
+  settingsCardsCompactHeading: "[EN] Cards Compact",
+  settingsCardsCompactDesc:
+    "[EN] Cards Compact has no global settings. Its display options (compact mode, card size, image fit, image property, show icon) are configured per Base — open a Base using the Cards Compact view and edit its view settings from the sidebar.",
+  settingsTimelineHeading: "[EN] Timeline view",
   helpAria: "Pomoc widoku",
   feedHelpLine1: "Kliknij tytuł notatki, aby ją otworzyć.",
   feedHelpLine2: "Użyj „Nowa notatka”, aby utworzyć notatkę powiązaną z tą Bazą.",
@@ -532,6 +612,13 @@ const uk: LocaleStrings = {
   timelineTodayMarkerColorName: "[EN] Timeline today-marker color",
   timelineTodayMarkerColorDesc:
     "[EN] Overrides the default theme-adaptive color of the vertical line marking today's date in the Timeline view.",
+  settingsIntro:
+    "[EN] These settings apply globally, to every Base that uses an Advanced Bases view. Per-Base display options — like card size, image fit, or lane height — are configured separately in each Base's own view settings.",
+  settingsFeedHeading: "[EN] Feed view",
+  settingsCardsCompactHeading: "[EN] Cards Compact",
+  settingsCardsCompactDesc:
+    "[EN] Cards Compact has no global settings. Its display options (compact mode, card size, image fit, image property, show icon) are configured per Base — open a Base using the Cards Compact view and edit its view settings from the sidebar.",
+  settingsTimelineHeading: "[EN] Timeline view",
   helpAria: "Довідка перегляду",
   feedHelpLine1: "Натисніть на заголовок нотатки, щоб відкрити її.",
   feedHelpLine2: "Скористайтеся «Нова нотатка», щоб створити нотатку, пов'язану з цією Базою.",
@@ -574,6 +661,13 @@ const nl: LocaleStrings = {
   timelineTodayMarkerColorName: "[EN] Timeline today-marker color",
   timelineTodayMarkerColorDesc:
     "[EN] Overrides the default theme-adaptive color of the vertical line marking today's date in the Timeline view.",
+  settingsIntro:
+    "[EN] These settings apply globally, to every Base that uses an Advanced Bases view. Per-Base display options — like card size, image fit, or lane height — are configured separately in each Base's own view settings.",
+  settingsFeedHeading: "[EN] Feed view",
+  settingsCardsCompactHeading: "[EN] Cards Compact",
+  settingsCardsCompactDesc:
+    "[EN] Cards Compact has no global settings. Its display options (compact mode, card size, image fit, image property, show icon) are configured per Base — open a Base using the Cards Compact view and edit its view settings from the sidebar.",
+  settingsTimelineHeading: "[EN] Timeline view",
   helpAria: "Weergavehulp",
   feedHelpLine1: "Klik op de titel van een notitie om deze te openen.",
   feedHelpLine2: 'Gebruik "Nieuwe notitie" om een notitie te maken die is gekoppeld aan deze Base.',
@@ -618,6 +712,13 @@ const tr: LocaleStrings = {
   timelineTodayMarkerColorName: "[EN] Timeline today-marker color",
   timelineTodayMarkerColorDesc:
     "[EN] Overrides the default theme-adaptive color of the vertical line marking today's date in the Timeline view.",
+  settingsIntro:
+    "[EN] These settings apply globally, to every Base that uses an Advanced Bases view. Per-Base display options — like card size, image fit, or lane height — are configured separately in each Base's own view settings.",
+  settingsFeedHeading: "[EN] Feed view",
+  settingsCardsCompactHeading: "[EN] Cards Compact",
+  settingsCardsCompactDesc:
+    "[EN] Cards Compact has no global settings. Its display options (compact mode, card size, image fit, image property, show icon) are configured per Base — open a Base using the Cards Compact view and edit its view settings from the sidebar.",
+  settingsTimelineHeading: "[EN] Timeline view",
   helpAria: "Görünüm yardımı",
   feedHelpLine1: "Açmak için bir notun başlığına tıklayın.",
   feedHelpLine2: 'Bu Base\'e bağlı bir not oluşturmak için "Yeni not"u kullanın.',
@@ -659,6 +760,13 @@ const ko: LocaleStrings = {
   timelineTodayMarkerColorName: "[EN] Timeline today-marker color",
   timelineTodayMarkerColorDesc:
     "[EN] Overrides the default theme-adaptive color of the vertical line marking today's date in the Timeline view.",
+  settingsIntro:
+    "[EN] These settings apply globally, to every Base that uses an Advanced Bases view. Per-Base display options — like card size, image fit, or lane height — are configured separately in each Base's own view settings.",
+  settingsFeedHeading: "[EN] Feed view",
+  settingsCardsCompactHeading: "[EN] Cards Compact",
+  settingsCardsCompactDesc:
+    "[EN] Cards Compact has no global settings. Its display options (compact mode, card size, image fit, image property, show icon) are configured per Base — open a Base using the Cards Compact view and edit its view settings from the sidebar.",
+  settingsTimelineHeading: "[EN] Timeline view",
   helpAria: "보기 도움말",
   feedHelpLine1: "노트 제목을 클릭하면 열립니다.",
   feedHelpLine2: '"새 노트"를 사용해 이 Base에 연결된 노트를 만듭니다.',
@@ -688,10 +796,10 @@ const LOCALES: Record<string, LocaleStrings> = {
 };
 
 /**
- * Resolves a raw Obsidian language code (from getLanguage(), e.g. "en",
- * "zh-CN", "pt-BR") to one of our supported locale keys, falling back to
- * the base language and finally English. Pure function, no Obsidian
- * dependency, so it stays unit-testable.
+ * Resolves a raw Obsidian language code (as stored in localStorage, e.g.
+ * "en", "zh-CN", "pt-BR") to one of our supported locale keys, falling back
+ * to the base language and finally English. Pure function, no DOM access,
+ * so it stays unit-testable.
  */
 export function resolveLocale(raw: string | null | undefined): string {
   const normalized = (raw || "en").toLowerCase();
@@ -701,8 +809,16 @@ export function resolveLocale(raw: string | null | undefined): string {
   return "en";
 }
 
+function detectRawLanguage(): string | null {
+  try {
+    return window.localStorage.getItem("language");
+  } catch {
+    return null;
+  }
+}
+
 export function getStrings(): LocaleStrings {
-  return LOCALES[resolveLocale(getLanguage())] ?? en;
+  return LOCALES[resolveLocale(detectRawLanguage())] ?? en;
 }
 
 export function format(template: string, vars: Record<string, string>): string {

@@ -47,17 +47,15 @@ function openPopover(btn: HTMLElement, content: ViewHelpContent): void {
 
   // Position under the button, right-aligned to it, clamped to the viewport.
   const rect = btn.getBoundingClientRect();
-  popover.setCssStyles({ visibility: "hidden" });
+  popover.style.visibility = "hidden";
   const pw = popover.offsetWidth;
   let left = rect.right - pw;
   if (left < 8) left = 8;
   const maxLeft = doc.documentElement.clientWidth - pw - 8;
   if (left > maxLeft) left = Math.max(8, maxLeft);
-  popover.setCssStyles({
-    left: `${left}px`,
-    top: `${rect.bottom + 4}px`,
-    visibility: "",
-  });
+  popover.style.left = `${left}px`;
+  popover.style.top = `${rect.bottom + 4}px`;
+  popover.style.visibility = "";
 
   // Dismiss on outside click or Escape.
   const onDocClick = (evt: MouseEvent) => {

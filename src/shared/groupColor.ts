@@ -93,12 +93,12 @@ export function renderColorSwatch(
     cls: "advanced-bases-color-swatch",
     attr: { type: "button", "aria-label": "Change color" },
   });
-  swatchEl.setCssProps({ "--swatch-color": currentColor });
+  swatchEl.style.setProperty("--swatch-color", currentColor);
 
   const inputEl = parentEl.createEl("input", {
     attr: { type: "color", value: currentColor },
   });
-  inputEl.setCssStyles({ display: "none" });
+  inputEl.style.display = "none";
 
   swatchEl.addEventListener("click", (event) => {
     event.stopPropagation();
@@ -106,7 +106,7 @@ export function renderColorSwatch(
   });
 
   inputEl.addEventListener("input", () => {
-    swatchEl.setCssProps({ "--swatch-color": inputEl.value });
+    swatchEl.style.setProperty("--swatch-color", inputEl.value);
     onChange(inputEl.value);
   });
 

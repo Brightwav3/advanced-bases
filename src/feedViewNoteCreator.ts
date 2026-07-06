@@ -1,5 +1,6 @@
-import { App, Notice, TFile, TFolder, moment, normalizePath } from "obsidian";
-import type { Moment } from "./momentType";
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-redundant-type-constituents */
+import { App, Notice, TFile, TFolder, normalizePath } from "obsidian";
+import moment from "moment";
 import { format, getStrings } from "./i18n";
 import {
   buildBaseWikilink,
@@ -50,7 +51,7 @@ export async function createFeedViewNote(
     return;
   }
 
-  const now: Moment = moment();
+  const now = moment();
   const basename = buildFeedViewNoteBasename(now, baseName);
   const folder = await ensureFolder(app, noteFolder);
   const path = normalizePath(buildFeedViewNotePath(folder.path, basename));
@@ -65,7 +66,7 @@ export async function createFeedViewNote(
   const file = await app.vault.create(path, rendered);
 
   const baseFile = app.vault.getAbstractFileByPath(`${baseName}.md`);
-  await app.fileManager.processFrontMatter(file, (fm: Record<string, unknown>) => {
+  await app.fileManager.processFrontMatter(file, (fm) => {
     fm.kurz =
       baseFile instanceof TFile
         ? app.fileManager.generateMarkdownLink(baseFile, file.path)

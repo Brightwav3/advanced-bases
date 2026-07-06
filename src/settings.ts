@@ -25,10 +25,9 @@ interface LegacySettings {
   lessonTemplatePath?: string;
 }
 
-export function migrateSettings(loadedData: unknown): AdvancedBasesSettings {
-  const loaded = (
-    loadedData && typeof loadedData === "object" ? loadedData : {}
-  ) as Partial<AdvancedBasesSettings> & LegacySettings;
+export function migrateSettings(
+  loaded: Partial<AdvancedBasesSettings> & LegacySettings
+): AdvancedBasesSettings {
   const migrated: Partial<AdvancedBasesSettings> = { ...loaded };
   if (migrated.feedViewNoteFolder === undefined && loaded.lessonFolder !== undefined) {
     migrated.feedViewNoteFolder = loaded.lessonFolder;
@@ -51,10 +50,18 @@ export class AdvancedBasesSettingTab extends PluginSettingTab {
     super(app, plugin);
   }
 
+  // @ts-ignore - display is deprecated since 1.13.0, but we must use it to maintain compatibility with older Obsidian versions (minAppVersion is 1.10.0)
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
     const t = getStrings();
+
+    containerEl.createEl("p", {
+      text: t.settingsIntro,
+      cls: "setting-item-description",
+    });
+
+    new Setting(containerEl).setName(t.settingsFeedHeading).setHeading();
 
     new Setting(containerEl)
       .setName(t.enableButtonName)
@@ -96,6 +103,15 @@ export class AdvancedBasesSettingTab extends PluginSettingTab {
           });
       });
 
+    new Setting(containerEl).setName(t.settingsCardsCompactHeading).setHeading();
+
+    containerEl.createEl("p", {
+      text: t.settingsCardsCompactDesc,
+      cls: "setting-item-description",
+    });
+
+    new Setting(containerEl).setName(t.settingsTimelineHeading).setHeading();
+
     new Setting(containerEl)
       .setName(t.timelineTodayMarkerColorName)
       .setDesc(t.timelineTodayMarkerColorDesc)
@@ -114,6 +130,7 @@ export class AdvancedBasesSettingTab extends PluginSettingTab {
           .onClick(async () => {
             this.plugin.settings.todayMarkerColor = DEFAULT_SETTINGS.todayMarkerColor;
             await this.plugin.saveSettings();
+            // @ts-ignore
             this.display();
           });
       });

@@ -137,7 +137,7 @@ export default class AdvancedBasesPlugin extends Plugin {
   }
 
   async loadSettings(): Promise<void> {
-    this.settings = migrateSettings(await this.loadData());
+    this.settings = migrateSettings((await this.loadData()) || {});
   }
 
   async saveSettings(): Promise<void> {

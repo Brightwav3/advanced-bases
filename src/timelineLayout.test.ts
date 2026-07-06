@@ -30,7 +30,7 @@ describe("clampPxPerDay", () => {
 describe("computeDateRange", () => {
   it("spans from the earliest to latest date, padded by paddingDays on both ends", () => {
     const dates = [moment("2026-03-01"), moment("2026-01-10"), moment("2026-06-15")];
-    const range = computeDateRange(dates, moment(), 10);
+    const range = computeDateRange(dates, 10);
     expect(range.start.format("YYYY-MM-DD")).toBe(
       moment("2026-01-10").subtract(10, "days").format("YYYY-MM-DD")
     );
@@ -41,7 +41,7 @@ describe("computeDateRange", () => {
 
   it("uses the default 30-day padding when not specified", () => {
     const dates = [moment("2026-05-01")];
-    const range = computeDateRange(dates, moment());
+    const range = computeDateRange(dates);
     expect(range.start.format("YYYY-MM-DD")).toBe(
       moment("2026-05-01").subtract(30, "days").format("YYYY-MM-DD")
     );
@@ -50,9 +50,9 @@ describe("computeDateRange", () => {
     );
   });
 
-  it("returns a range centered on now when given an empty array", () => {
+  it("returns a range centered on today when given an empty array", () => {
+    const range = computeDateRange([], 5);
     const today = moment();
-    const range = computeDateRange([], today, 5);
     expect(range.start.format("YYYY-MM-DD")).toBe(today.clone().subtract(5, "days").format("YYYY-MM-DD"));
     expect(range.end.format("YYYY-MM-DD")).toBe(today.clone().add(5, "days").format("YYYY-MM-DD"));
   });
