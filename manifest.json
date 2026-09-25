@@ -5,5 +5,6 @@
   "minAppVersion": "1.10.0",
   "description": "Notion-style views for Bases — Cards Compact, Feed, and Timeline. A lighter build with only the core views.",
   "author": "Šimon Zelenka",
-  "isDesktopOnly": false
+  "isDesktopOnly": false,
+  "fundingUrl": "https://buymeacoffee.com/brightwave"
 }

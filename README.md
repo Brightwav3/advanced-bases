@@ -78,6 +78,10 @@ src/
   viewHelp.ts                shared "?" toolbar help control
 ```
 
+## Support
+
+If this saved you time, you can [buy me a coffee ☕](https://buymeacoffee.com/brightwave).
+
 ## License
 
 [MIT](LICENSE)
